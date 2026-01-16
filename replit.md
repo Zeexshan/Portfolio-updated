@@ -52,17 +52,10 @@ cd portfolio && node server.js
 - Updated YouTube stats: 2K+ subscribers, 1.7M+ views
 - Added ICAT certification (All India Rank #1279)
 - Added Premiere Pro and After Effects to skills
-- Added AI chatbot assistant with Gemini (gemini-2.5-flash with fallback)
+- Added AI chatbot assistant with Gemini
 - Added scroll-triggered animations
 - Added quick action buttons in chatbot
 - Enhanced hover effects on project cards
-- **Framer-Style 3D Effects Added:**
-  - Floating gradient orbs with parallax scrolling
-  - 3D tilt effect on glass panels and project cards (mouse-follow)
-  - Mouse-follow lighting/glow effect on panels
-  - Parallax scroll on background orbs and title
-  - Enhanced depth shadows on hover
-  - Respects prefers-reduced-motion accessibility setting
 
 ## User Preferences
 - Keep orange accent color (#ff4c00)
