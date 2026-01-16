@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        /* --- THEME VARIABLES --- */
         :root {
             --bg-primary-solid: #0d0d0d;
             --bg-primary-gradient: #0d0d0d;
@@ -97,7 +96,7 @@
 
         @keyframes grain { 0%, 100% { transform: translate(0, 0) } 10% { transform: translate(-5%, -10%) } 20% { transform: translate(-15%, 5%) } 30% { transform: translate(7%, -25%) } 40% { transform: translate(-5%, 25%) } 50% { transform: translate(-15%, 10%) } 60% { transform: translate(15%, 0%) } 70% { transform: translate(0%, 15%) } 80% { transform: translate(3%, -10%) } 90% { transform: translate(-10%, 5%) } }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; padding-bottom: 100px; }
 
         .glass-panel, .grid-item {
             background: var(--glass-bg);
@@ -108,6 +107,13 @@
             padding: 24px;
             margin-bottom: 30px;
             transition: background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .glass-panel.animate-in, .grid-item.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
         }
         body.light-mode .glass-panel, body.light-mode .grid-item {
             backdrop-filter: blur(15px) saturate(130%);
@@ -173,7 +179,7 @@
         }
         .hello-title .exclamation { color: var(--accent-primary); }
 
-        .profile-image {
+        .profile-video, .profile-image {
             width: 100%;
             height: 100%;
             max-height: 350px;
@@ -200,10 +206,13 @@
             border-radius: 999px;
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .contact-btn:hover { background: var(--accent-hover); }
+        .contact-btn:hover { 
+            background: var(--accent-hover);
+            transform: scale(1.03);
+        }
         body.light-mode .contact-btn:hover {
             background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            transform: translateY(-1px);
+            transform: translateY(-1px) scale(1.03);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         }
         .contact-btn svg { width: 16px; height: 16px; fill: white; }
@@ -233,7 +242,6 @@
         .language-name { font-size: 14px; color: var(--text-primary); }
         .language-level { font-size: 12px; color: var(--text-secondary); }
 
-        /* Enhanced Project Gallery Styles */
         .projects-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -251,12 +259,12 @@
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
 
         body.light-mode .project-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
@@ -267,7 +275,7 @@
         }
 
         .project-card:hover .project-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .project-info {
@@ -331,7 +339,6 @@
             fill: #4caf50;
         }
 
-        /* YouTube channel highlight */
         .youtube-highlight {
             background: linear-gradient(135deg, #ff0000, #cc0000);
             color: white;
@@ -352,9 +359,15 @@
             margin: 0 10px 20px 0;
             border-radius: 8px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
-        .filter-btn:hover { background: var(--accent-hover); }
+        .filter-btn:hover { 
+            background: var(--accent-hover);
+            transform: scale(1.05);
+        }
+        .filter-btn:active {
+            transform: scale(0.98);
+        }
         .filter-btn.active {
             background: #fff;
             color: var(--accent-primary);
@@ -378,11 +391,253 @@
             margin-bottom: 0;
         }
 
+        .chatbot-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ff4c00;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 76, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 76, 0, 0.5);
+        }
+        .chatbot-button svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            width: 350px;
+            height: 500px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow), 0 10px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px) saturate(150%);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .chatbot-window.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .chat-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        body.light-mode .chat-header {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .chat-header-title {
+            font-family: "Anton", sans-serif;
+            font-size: 16px;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+        }
+        .chat-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+        .chat-close-btn:hover {
+            color: var(--text-primary);
+        }
+        .chat-close-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+            animation: messageIn 0.3s ease;
+        }
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chat-message.user {
+            background: #ff4c00;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-message.ai {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+            max-width: 60px;
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: 0s; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--glass-border);
+        }
+        .quick-action-btn {
+            background: rgba(255, 76, 0, 0.15);
+            border: 1px solid rgba(255, 76, 0, 0.3);
+            color: #ff4c00;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .quick-action-btn:hover {
+            background: #ff4c00;
+            color: white;
+        }
+        body.light-mode .quick-action-btn {
+            background: rgba(58, 58, 58, 0.1);
+            border-color: rgba(58, 58, 58, 0.3);
+            color: #3a3a3a;
+        }
+        body.light-mode .quick-action-btn:hover {
+            background: #3a3a3a;
+            color: white;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            padding: 16px;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        body.light-mode .chat-input-area {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .chat-input {
+            flex: 1;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--text-primary);
+            font-family: "Urbanist", sans-serif;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .chat-input::placeholder {
+            color: var(--text-secondary);
+        }
+        .chat-input:focus {
+            border-color: #ff4c00;
+        }
+        .chat-send-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ff4c00;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+            background: #e04300;
+        }
+        .chat-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .chat-send-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
         @media (max-width: 768px) {
             .container { padding: 30px 20px; }
             .hello-section { text-align: center; }
             .contact-buttons { justify-content: center; }
             .projects-gallery { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+            .chatbot-window {
+                width: calc(100% - 32px);
+                height: calc(100vh - 160px);
+                right: 16px;
+                bottom: 90px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -399,6 +654,14 @@
                 display: block;
                 margin: 15px auto 0 auto;
                 text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -436,27 +699,27 @@
             This portfolio contains some of my work and assignments in web
             development, graphic design, and video editing.
           </div>
-          <div class="copyright">Copyright © 2024</div>
+          <div class="copyright">Copyright © 2025</div>
         </div>
       </div>
 
       <div class="glass-panel">
         <div class="hello-section">
-          <img loading="lazy"
-            src="hi.png"
-            alt="Zeeshan Khan Profile"
-            class="profile-image"
-          />
+          <video 
+            class="profile-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            poster="hi.png"
+          >
+            <source src="me.mp4" type="video/mp4">
+            <img src="hi.png" alt="Zeeshan Khan Profile" class="profile-image">
+          </video>
           <div class="hello-content">
             <h2 class="hello-title">HELLO<span class="exclamation">!</span></h2>
             <p class="bio-text">
-              Hey there! I am a self-taught graphic designer and web developer
-              with a passion for creativity. I've mastered Alight Motion and
-              wield Photoshop, Lightroom, and Illustrator to bring ideas to
-              life. From logos to theme banners and modern web applications, I
-              craft designs and code with purpose and impact. Let's collaborate
-              and turn your vision into captivating visuals and functional
-              digital experiences!
+              Hey there! I'm a versatile Web Developer and Creative Designer with expertise in full-stack development (React, MERN, Node.js) and professional design tools (Photoshop, Illustrator, After Effects). I've trained 200+ students at MIT College and continue mentoring at Programmers Point. My content has generated 1.7M+ YouTube views. ICAT Certified with All India Rank #1279. Let's collaborate and turn your vision into reality!
             </p>
             <div class="contact-buttons">
               <a href="mailto:zixshankhan@gmail.com" class="contact-btn">
@@ -466,21 +729,21 @@
                 </svg>
                 zixshankhan@gmail.com
               </a>
-              <a href="https://instagram.com/xnemesis_" class="contact-btn">
+              <a href="https://www.linkedin.com/in/zeeexshan" class="contact-btn" target="_blank" rel="noopener noreferrer">
                 <svg fill="currentColor" viewBox="0 0 24 24">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path stroke="var(--bg-primary-solid)" stroke-width="2" d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line stroke="var-mode" stroke-width="2" x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
                 </svg>
-                instagram.com/xnemesis_
+                LinkedIn
               </a>
-              <a href="tel:6268719705" class="contact-btn">
+              <a href="tel:+917440479719" class="contact-btn">
                 <svg fill="currentColor" viewBox="0 0 24 24">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                (+91) 6268719705
+                (+91) 7440479719
               </a>
-              <a href="https://youtube.com/@beyondxcanon" class="contact-btn">
+              <a href="https://youtube.com/@beyondxcanon" class="contact-btn" target="_blank" rel="noopener noreferrer">
                 <svg fill="currentColor" viewBox="0 0 24 24">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
@@ -494,31 +757,47 @@
       <div class="grid-section">
         <div class="grid-item">
           <h3 class="section-title">Education</h3>
-          <div class="experience-item"><div class="experience-year">2023 – 2025</div><div class="experience-title">Bachelor of Computer Applications (BCA)</div><div class="experience-company">Lokmanya Tilak Science and Commerce College, Ujjain</div></div>
-          <div class="experience-item"><div class="experience-year">2022 – 2023</div><div class="experience-title">Higher Secondary (Class 12th)</div><div class="experience-company">Kalidas Montessori Sr. Sec. School, Ujjain</div></div>
-          <div class="experience-item"><div class="experience-year">2020 – 2021</div><div class="experience-title">Senior Secondary (Class 10th)</div><div class="experience-company">Kalidas Montessori Sr. Sec. School, Ujjain</div></div>
+          <div class="experience-item"><div class="experience-year">2022 – 2025</div><div class="experience-title">Bachelor of Computer Applications (BCA)</div><div class="experience-company">Lokmanya Tilak Science & Commerce College, Ujjain</div></div>
+          <div class="experience-item"><div class="experience-year">2021 – 2023</div><div class="experience-title">Higher Secondary (Class 12th)</div><div class="experience-company">Kalidas Montessori Sr. Sec. School, Ujjain</div></div>
+          <div class="experience-item"><div class="experience-year">2019 – 2021</div><div class="experience-title">Senior Secondary (Class 10th)</div><div class="experience-company">Kalidas Montessori Sr. Sec. School, Ujjain</div></div>
         </div>
         
         <div class="grid-item">
           <h3 class="section-title">Experience</h3>
           <div class="experience-item">
+            <div class="experience-year">Aug 2025 - Present</div>
+            <div class="experience-title">Full Stack Developer</div>
+            <div class="experience-company">Hussaini IT Services (Remote/Hybrid)</div>
+          </div>
+          <div class="experience-item">
+            <div class="experience-year">Aug - Nov 2025</div>
+            <div class="experience-title">Visiting Technical Trainer</div>
+            <div class="experience-company">MIT College, Ujjain (200+ Students)</div>
+          </div>
+          <div class="experience-item">
+            <div class="experience-year">Jan 2024 - Present</div>
+            <div class="experience-title">Content & Technical Lead
+              <span class="youtube-highlight">700K+ Views</span>
+            </div>
+            <div class="experience-company">Programmers Point (Affimintus Technology)</div>
+          </div>
+          <div class="experience-item">
             <div class="experience-year">2025 - Present</div>
             <div class="experience-title">Content Creator
-              <span class="youtube-highlight">1.2K+ Subscribers</span>
+              <span class="youtube-highlight">2K+ Subscribers</span>
             </div>
             <div class="experience-company">Beyond X Canon YouTube Channel</div>
           </div>
-          <div class="experience-item"><div class="experience-year">2024 - Present</div><div class="experience-title">Video Editor & Social Media Manager</div><div class="experience-company">Programmers College (400k+ YouTube views)</div></div>
-          <div class="experience-item"><div class="experience-year">2024 - Present</div><div class="experience-title">Trainer</div><div class="experience-company">Programmers Point (Communication, Programming, Logic Building)</div></div>
-          <div class="experience-item"><div class="experience-year">2021 - 2023</div><div class="experience-title">Freelancer Designer</div><div class="experience-company">PGTV LLC (Logos, Banners)</div></div>
+          <div class="experience-item"><div class="experience-year">Jan 2021 - Dec 2023</div><div class="experience-title">Freelance Designer</div><div class="experience-company">PGTV LLC (500+ Videos Edited)</div></div>
         </div>
         
         <div class="grid-item">
           <h3 class="section-title">Software Skills</h3>
           <div class="software-item"><div class="software-icon">Ps</div><div class="software-details"><h4>Photoshop</h4><p>Design, photo editing</p></div></div>
           <div class="software-item"><div class="software-icon">Ai</div><div class="software-details"><h4>Illustrator</h4><p>Vector, layouting</p></div></div>
+          <div class="software-item"><div class="software-icon">Pr</div><div class="software-details"><h4>Premiere Pro</h4><p>Video editing</p></div></div>
+          <div class="software-item"><div class="software-icon">Ae</div><div class="software-details"><h4>After Effects</h4><p>Motion graphics, VFX</p></div></div>
           <div class="software-item"><div class="software-icon">Lr</div><div class="software-details"><h4>Lightroom</h4><p>Photo enhancement</p></div></div>
-          <div class="software-item"><div class="software-icon">Am</div><div class="software-details"><h4>Alight Motion</h4><p>Motion design, animation</p></div></div>
         </div>
       </div>
       
@@ -531,97 +810,7 @@
           </div>
       </div>
 
-      <div class="glass-panel project-section gfx-projects">
-        <h3 class="section-title">Featured Graphics Projects</h3>
-        <div class="projects-gallery">
-          <div class="project-card">
-            <img loading="lazy" src="Jojo.jpg" alt="Tournament Posters" class="project-image">
-            <div class="project-info">
-              <div class="project-badge">Runner Up</div>
-              <div class="project-title">Editing Tournament Posters</div>
-              <div class="project-date">August 2023</div>
-              <a href="https://www.instagram.com/p/CubuQUexZZ6/?igsh=MXBmM3FobXVlaGc5NQ==" class="project-link" target="_blank" rel="noopener noreferrer">
-                View on Instagram
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17l10-10M17 7H7v10"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-          
-          <div class="project-card">
-            <img loading="lazy" src="T.jpg" alt="Tomie Design" class="project-image">
-            <div class="project-info">
-              <div class="project-title">Tomie - Horror Poster Design</div>
-              <div class="project-date">February 2023</div>
-              <a href="https://pin.it/67B19BCdM" class="project-link" target="_blank" rel="noopener noreferrer">
-                View on Pinterest
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17l10-10M17 7H7v10"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <img loading="lazy" src="S.jpg" alt="Stellar Design" class="project-image">
-            <div class="project-info">
-              <div class="project-title">Stellar - Space Theme Design</div>
-              <div class="project-date">October 2022</div>
-              <a href="https://pin.it/4Mokx1hMA" class="project-link" target="_blank" rel="noopener noreferrer">
-                View on Pinterest
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17l10-10M17 7H7v10"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <img loading="lazy" src="N.jpg" alt="Revolutionary Design" class="project-image">
-            <div class="project-info">
-              <div class="project-title">Revolutionary Wars Poster</div>
-              <div class="project-date">2024</div>
-              <a href="https://pin.it/1IVASrnXw" class="project-link" target="_blank" rel="noopener noreferrer">
-                View on Pinterest
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17l10-10M17 7H7v10"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <img loading="lazy" src="C.jpg" alt="GFX Design" class="project-image">
-            <div class="project-info">
-              <div class="project-title">Professional GFX Design</div>
-              <div class="project-date">2024</div>
-              <a href="https://pin.it/4DkAeZ52s" class="project-link" target="_blank" rel="noopener noreferrer">
-                View on Pinterest
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17l10-10M17 7H7v10"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <img loading="lazy" src="O.jpg" alt="Creative GFX" class="project-image">
-            <div class="project-info">
-              <div class="project-title">Creative Graphics Design</div>
-              <div class="project-date">2024</div>
-              <a href="https://pin.it/MldZLWJMy" class="project-link" target="_blank" rel="noopener noreferrer">
-                View on Pinterest
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 17l10-10M17 7H7v10"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="glass-panel project-section web-projects hidden">
+      <div class="glass-panel project-section web-projects">
         <h3 class="section-title">Web Development Projects</h3>
         <div class="projects-gallery">
             <div class="project-card">
@@ -629,7 +818,7 @@
               <div class="project-info">
                 <div class="project-badge live-badge">Live Website</div>
                 <div class="project-title">Programmers College Website</div>
-                <div class="project-date">2024</div>
+                <div class="project-date">2024 - React, Tailwind CSS</div>
                 <a href="https://programmerscollege.com/" class="project-link live-link" target="_blank" rel="noopener noreferrer">
                   Live Preview
                   <svg viewBox="0 0 24 24">
@@ -640,12 +829,12 @@
             </div>
 
             <div class="project-card">
-                <img loading="lazy" src="A.png" alt="Admin Panel" class="project-image">
+                <img loading="lazy" src="A.png" alt="School Management App" class="project-image">
                 <div class="project-info">
                     <div class="project-badge live-badge">Live Website</div>
-                    <div class="project-title">Admin Panel</div>
-                    <div class="project-date">2024</div>
-                    <a href="https://adminzeeexshan.netlify.app/" class="project-link live-link" target="_blank" rel="noopener noreferrer">
+                    <div class="project-title">School Management Application</div>
+                    <div class="project-date">2024 - MERN Stack</div>
+                    <a href="https://cerulean-starlight-aa453f.netlify.app/" class="project-link live-link" target="_blank" rel="noopener noreferrer">
                         Live Preview
                         <svg viewBox="0 0 24 24">
                             <path d="M7 17l10-10M17 7H7v10"/>
@@ -671,6 +860,95 @@
         </div>
       </div>
 
+      <div class="glass-panel project-section gfx-projects">
+        <h3 class="section-title">Featured Graphics Projects</h3>
+        <div class="projects-gallery">
+          <div class="project-card">
+            <img loading="lazy" src="jojo.jpg" alt="Tournament Posters" class="project-image">
+            <div class="project-info">
+              <div class="project-badge">Runner Up</div>
+              <div class="project-title">Editing Tournament Posters</div>
+              <div class="project-date">August 2023</div>
+              <a href="https://www.instagram.com/p/CubuQUexZZ6/?igsh=MXBmM3FobXVlaGc5NQ==" class="project-link" target="_blank" rel="noopener noreferrer">
+                View on Instagram
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17l10-10M17 7H7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img loading="lazy" src="t.jpg" alt="Tomie Design" class="project-image">
+            <div class="project-info">
+              <div class="project-title">Tomie - Horror Poster Design</div>
+              <div class="project-date">February 2023</div>
+              <a href="https://pin.it/67B19BCdM" class="project-link" target="_blank" rel="noopener noreferrer">
+                View on Pinterest
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17l10-10M17 7H7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img loading="lazy" src="s.jpg" alt="Stellar Design" class="project-image">
+            <div class="project-info">
+              <div class="project-title">Stellar - Space Theme Design</div>
+              <div class="project-date">October 2022</div>
+              <a href="https://pin.it/4Mokx1hMA" class="project-link" target="_blank" rel="noopener noreferrer">
+                View on Pinterest
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17l10-10M17 7H7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img loading="lazy" src="n.jpg" alt="Revolutionary Design" class="project-image">
+            <div class="project-info">
+              <div class="project-title">Revolutionary Wars Poster</div>
+              <div class="project-date">2024</div>
+              <a href="https://pin.it/1IVASrnXw" class="project-link" target="_blank" rel="noopener noreferrer">
+                View on Pinterest
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17l10-10M17 7H7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img loading="lazy" src="c.jpg" alt="GFX Design" class="project-image">
+            <div class="project-info">
+              <div class="project-title">Professional GFX Design</div>
+              <div class="project-date">2024</div>
+              <a href="https://pin.it/4DkAeZ52s" class="project-link" target="_blank" rel="noopener noreferrer">
+                View on Pinterest
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17l10-10M17 7H7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img loading="lazy" src="o.jpg" alt="Creative GFX" class="project-image">
+            <div class="project-info">
+              <div class="project-title">Creative Graphics Design</div>
+              <div class="project-date">2024</div>
+              <a href="https://pin.it/MldZLWJMy" class="project-link" target="_blank" rel="noopener noreferrer">
+                View on Pinterest
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 17l10-10M17 7H7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="grid-section">
         <div class="grid-item">
@@ -682,38 +960,80 @@
         
         <div class="grid-item">
           <h3 class="section-title">Technical Skills</h3>
-          <div class="software-item"><div class="software-icon">Ht</div><div class="software-details"><h4>HTML/CSS</h4><p>Web development, responsive design</p></div></div>
-          <div class="software-item"><div class="software-icon">Js</div><div class="software-details"><h4>JavaScript</h4><p>Interactive web applications</p></div></div>
-          <div class="software-item"><div class="software-icon">Bt</div><div class="software-details"><h4>Bootstrap</h4><p>Responsive frameworks</p></div></div>
+          <div class="software-item"><div class="software-icon">Re</div><div class="software-details"><h4>React / MERN</h4><p>Full-stack web applications</p></div></div>
+          <div class="software-item"><div class="software-icon">Js</div><div class="software-details"><h4>JavaScript / TypeScript</h4><p>Frontend & Backend development</p></div></div>
+          <div class="software-item"><div class="software-icon">Tw</div><div class="software-details"><h4>Tailwind / Bootstrap</h4><p>Responsive CSS frameworks</p></div></div>
+          <div class="software-item"><div class="software-icon">Db</div><div class="software-details"><h4>MySQL / MongoDB</h4><p>Database management</p></div></div>
           <div class="software-item"><div class="software-icon">Bl</div><div class="software-details"><h4>Blender</h4><p>3D modeling, animation</p></div></div>
         </div>
 
         <div class="grid-item">
           <h3 class="section-title">Achievements</h3>
           <div class="experience-item">
+            <div class="experience-year">2024</div>
+            <div class="experience-title">ICAT Certified</div>
+            <div class="experience-company">All India Rank #1279</div>
+          </div>
+          <div class="experience-item">
             <div class="experience-year">2025</div>
-            <div class="experience-title">YouTube Channel Growth</div>
-            <div class="experience-company">Beyond X Canon - 1.2K+ Subscribers organically</div>
+            <div class="experience-title">YouTube Channel Success</div>
+            <div class="experience-company">Beyond X Canon - 2K+ Subscribers, 1.7M+ Views</div>
+          </div>
+          <div class="experience-item">
+            <div class="experience-year">2024</div>
+            <div class="experience-title">Content Impact</div>
+            <div class="experience-company">Programmers College - 700K+ video views</div>
           </div>
           <div class="experience-item">
             <div class="experience-year">2023</div>
             <div class="experience-title">Tournament Runner Up</div>
             <div class="experience-company">Editing Competition - Poster Design Category</div>
           </div>
-          <div class="experience-item">
-            <div class="experience-year">2024</div>
-            <div class="experience-title">Social Media Success</div>
-            <div class="experience-company">Programmers College - 400K+ video views</div>
-          </div>
         </div>
       </div>
     </div>
 
+    <button class="chatbot-button" id="chatbotBtn" aria-label="Open chat assistant">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chat-header">
+        <span class="chat-header-title">ZEESHAN'S AI ASSISTANT</span>
+        <button class="chat-close-btn" id="chatCloseBtn" aria-label="Close chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-message ai">
+          Hi! I'm Zeeshan's AI assistant. Ask me about his skills, projects, or experience. How can I help you today?
+        </div>
+      </div>
+      <div class="quick-actions">
+        <button class="quick-action-btn" data-message="What are Zeeshan's skills?">Skills</button>
+        <button class="quick-action-btn" data-message="Tell me about his projects">Projects</button>
+        <button class="quick-action-btn" data-message="What is his experience?">Experience</button>
+        <button class="quick-action-btn" data-message="How can I contact Zeeshan?">Contact</button>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask about Zeeshan's work..." autocomplete="off">
+        <button class="chat-send-btn" id="chatSendBtn" aria-label="Send message">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
     <script>
-      // Automatically set the theme based on the time of day
       (function() {
         const currentHour = new Date().getHours();
-        // Light mode is active from 6 AM (6) to 6 PM (18)
         if (currentHour >= 6 && currentHour < 18) {
           document.body.classList.add('light-mode');
         } else {
@@ -721,16 +1041,33 @@
         }
       })();
 
-      // Project filtering and visibility logic
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('animate-in');
+            }, index * 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.glass-panel, .grid-item').forEach(el => {
+        observer.observe(el);
+      });
+
       function filterProjects(type) {
         const webProjects = document.querySelector('.web-projects');
         const gfxProjects = document.querySelector('.gfx-projects');
         const allButtons = document.querySelectorAll('.filter-btn');
 
-        // Reset active class for all buttons
         allButtons.forEach(btn => btn.classList.remove('active'));
-
-        // Add active class to the clicked button
         event.target.classList.add('active');
 
         if (type === 'web') {
@@ -745,14 +1082,97 @@
         }
       }
 
-      // Initial reveal animation on page load and initial filter state
       window.addEventListener('DOMContentLoaded', () => {
         const sections = document.querySelectorAll('.project-section');
         sections.forEach((sec, i) => {
           setTimeout(() => sec.classList.add('visible'), i * 200);
         });
-        // Set 'All' button to active on initial load
         document.querySelector('.filter-btn').classList.add('active');
+      });
+
+      const chatbotBtn = document.getElementById('chatbotBtn');
+      const chatbotWindow = document.getElementById('chatbotWindow');
+      const chatCloseBtn = document.getElementById('chatCloseBtn');
+      const chatInput = document.getElementById('chatInput');
+      const chatSendBtn = document.getElementById('chatSendBtn');
+      const chatMessages = document.getElementById('chatMessages');
+      const quickActionBtns = document.querySelectorAll('.quick-action-btn');
+
+      let isOpen = false;
+      let isSending = false;
+
+      chatbotBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        chatbotWindow.classList.toggle('open', isOpen);
+        if (isOpen) {
+          chatInput.focus();
+        }
+      });
+
+      chatCloseBtn.addEventListener('click', () => {
+        isOpen = false;
+        chatbotWindow.classList.remove('open');
+      });
+
+      function addMessage(text, isUser = false) {
+        const msg = document.createElement('div');
+        msg.className = `chat-message ${isUser ? 'user' : 'ai'}`;
+        msg.textContent = text;
+        chatMessages.appendChild(msg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function showTyping() {
+        const typing = document.createElement('div');
+        typing.className = 'typing-indicator';
+        typing.id = 'typingIndicator';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(typing);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function hideTyping() {
+        const typing = document.getElementById('typingIndicator');
+        if (typing) typing.remove();
+      }
+
+      async function sendMessage(message) {
+        if (isSending || !message.trim()) return;
+        
+        isSending = true;
+        chatSendBtn.disabled = true;
+        addMessage(message, true);
+        chatInput.value = '';
+        showTyping();
+
+        try {
+          const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+          });
+          const data = await response.json();
+          hideTyping();
+          addMessage(data.response || "Sorry, I couldn't process that. Try again?");
+        } catch (error) {
+          hideTyping();
+          addMessage("I'm having trouble connecting. Please try again or contact Zeeshan directly at zixshankhan@gmail.com!");
+        } finally {
+          isSending = false;
+          chatSendBtn.disabled = false;
+        }
+      }
+
+      chatSendBtn.addEventListener('click', () => sendMessage(chatInput.value));
+      
+      chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage(chatInput.value);
+      });
+
+      quickActionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          sendMessage(btn.dataset.message);
+        });
       });
     </script>
 </body>
