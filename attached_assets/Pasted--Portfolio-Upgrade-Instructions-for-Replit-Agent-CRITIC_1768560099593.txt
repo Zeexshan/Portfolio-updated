@@ -1,0 +1,407 @@
+# Portfolio Upgrade Instructions for Replit Agent
+
+## ⚠️ CRITICAL DESIGN PRESERVATION RULES
+
+**DO NOT CHANGE:**
+- Orange accent color (#ff4c00)
+- Current dark/light mode system (auto-switches at 6 AM/6 PM)
+- Anton font for headings
+- Urbanist font for body text
+- Glassmorphism aesthetic
+- Overall layout structure
+- Any existing animations or transitions
+
+**YOUR JOB:** Enhance and add features while keeping the exact same visual identity
+
+---
+
+## Task 1: Remove "xnemesis" Instagram References
+
+Search the entire codebase and remove ALL mentions of:
+- "xnemesis"
+- "xnemesis_"
+- "instagram.com/xnemesis_"
+
+This includes:
+- Contact buttons section
+- Any social media links
+- Footer or header areas
+- Comments in code
+- Any other location where it appears
+
+After removal, ensure no broken links or empty spaces remain.
+
+---
+
+## Task 2: Replace Profile Image with Video
+
+**Location:** The "Hello!" section currently has an image with `src="hi.png"`
+
+**Required Change:** Replace this image with a video element that uses `me.mp4`
+
+**Video Requirements:**
+- Must autoplay when page loads
+- Must be muted (required for autoplay to work)
+- Must loop continuously
+- Must maintain the same styling as current image (border-radius, shadow, sizing)
+- Must be responsive and work on mobile devices
+- Should have the image as a fallback for browsers that don't support video
+- Use `playsinline` attribute for mobile compatibility
+- Maintain `object-fit: cover` for proper video scaling
+
+---
+
+## Task 3: Update Portfolio Content from Resume
+
+I will provide an updated resume. You must:
+
+**Cross-check and update these sections:**
+
+1. **Education Section**
+   - Verify BCA dates (currently shows 2023-2025)
+   - Check if MCA should be added
+   - Update any institution names or details that changed
+
+2. **Experience Section**
+   - Add any new roles or positions
+   - Update dates for existing positions
+   - Add new achievements or responsibilities
+   - Verify all company names are correct
+
+3. **Skills Sections** (both Software Skills and Technical Skills)
+   - Add any newly acquired skills mentioned in resume
+   - Update descriptions if they've changed
+   - Ensure all current skills are listed
+
+4. **Projects Section**
+   - Add any new projects from resume
+   - Update existing project descriptions if changed
+   - Verify all project links and dates
+
+5. **Achievements Section**
+   - Add new achievements from resume
+   - Update metrics (subscriber counts, view counts, etc.)
+
+**Important:** Only update based on what's in the resume. Don't invent or assume information.
+
+---
+
+## Task 4: Add AI Chatbot Assistant
+
+### Chatbot Design Requirements
+
+**MUST USE EXISTING THEME:**
+- Primary color: Orange (#ff4c00) - same as current accent
+- Background: Use existing glassmorphism style (--glass-bg, --glass-border variables)
+- Fonts: Anton for any headings, Urbanist for chat text
+- Support both dark and light modes (should switch automatically with the rest of the site)
+- Match current button and panel styling exactly
+
+### Chatbot UI Components
+
+**1. Floating Chat Button**
+- Position: Fixed to bottom-right corner of screen
+- Style: Circular button matching current contact button style
+- Icon: Simple chat bubble or message icon (white color)
+- Behavior: Click to open/close chat window
+- Should have smooth scale animation on hover
+- Must be visible on all screen sizes
+
+**2. Chat Window**
+- Opens above the floating button when clicked
+- Desktop: 350px wide × 500px tall
+- Mobile: Full screen overlay
+- Background: Use --glass-bg variable
+- Border: Use --glass-border variable
+- Border-radius: 16px (matching other panels)
+- Box-shadow: Use --glass-shadow variable
+- Backdrop-filter: Same as other glass panels
+- Should have smooth slide-up animation when opening
+- Should have slide-down animation when closing
+
+**3. Chat Header**
+- Title: "Zeeshan's AI Assistant" or similar
+- Close button: X icon in top-right
+- Background: Slightly darker than chat body
+- Match existing typography
+
+**4. Messages Area**
+- Scrollable container for conversation
+- Auto-scroll to bottom when new message arrives
+- User messages: Orange background (#ff4c00), white text, right-aligned
+- AI messages: Glass panel background, left-aligned, text color matches theme
+- Message bubbles: Rounded corners, proper padding
+- Timestamp: Small text below each message (optional)
+- Smooth fade-in animation for new messages
+
+**5. Input Area**
+- Text input field at bottom of chat window
+- Send button: Orange (#ff4c00) matching theme
+- Placeholder text: "Ask me about Zeeshan's work..."
+- Should be sticky at bottom while messages scroll
+
+**6. Quick Action Buttons (Optional Enhancement)**
+- Pre-defined buttons like "View Projects", "Contact Info", "Skills"
+- Styled as small pills matching current badge style
+- Orange background like other buttons
+- Should trigger relevant chatbot responses
+
+**7. Typing Indicator**
+- Show animated dots when AI is responding
+- Use theme colors
+- Simple animation
+
+### Chatbot Behavior & Personality
+
+**AI Assistant Role:**
+Professional AI assistant for Zeeshan Khan's portfolio
+
+**Tone & Style:**
+- Professional but friendly
+- Brief and concise (2-3 sentences maximum unless user asks for detail)
+- Slightly futuristic/tech-forward language
+- Confident but not arrogant
+
+**Knowledge Base - Use This Information:**
+
+**About Zeeshan:**
+- Full Name: Zeeshan Khan
+- Role: Creative Developer & Graphic Designer
+- Email: zixshankhan@gmail.com
+
+**Technical Skills:**
+- Design Tools: Adobe Photoshop, Illustrator, Lightroom, Alight Motion, Blender
+- Development: React, Three.js, WebGL, HTML/CSS, JavaScript, Bootstrap, Tailwind CSS
+
+**Education:**
+- Bachelor of Computer Applications (BCA) - 2023-2025 (verify with resume)
+- Higher Secondary - 2022-2023
+- Senior Secondary - 2020-2021
+(Update based on provided resume)
+
+**Experience:**
+- Content Creator at Beyond X Canon YouTube (1.2K+ Subscribers) - 2025-Present
+- Video Editor & Social Media Manager at Programmers College (400K+ views) - 2024-Present
+- Trainer at Programmers Point - 2024-Present
+- Freelancer Designer at PGTV LLC - 2021-2023
+(Update based on provided resume)
+
+**Notable Projects:**
+1. Programmers College Website - Live corporate website
+2. Admin Panel - Live web application
+3. Asset Rental Website - Live platform
+4. Multiple graphics design projects (posters, tournament designs)
+
+**Achievements:**
+- 1.2K+ organic YouTube subscribers
+- 400K+ video views for Programmers College
+- Tournament Runner Up in editing competition
+
+**Response Rules:**
+1. Keep ALL answers to 2-3 sentences maximum (unless user specifically asks for more detail)
+2. If user asks about topics unrelated to Zeeshan, politely redirect: "That's interesting, but I'm here to help you learn about Zeeshan's work and skills. What would you like to know?"
+3. Be helpful and informative about his projects, skills, and experience
+4. Use confident, tech-forward language
+5. Always stay on topic - this portfolio
+6. Suggest viewing specific projects when relevant
+7. Provide contact information when asked
+8. Be encouraging about collaboration opportunities
+
+**Example Responses:**
+
+User: "What does Zeeshan do?"
+AI: "Zeeshan is a creative developer and graphic designer who builds modern web applications and creates stunning visual content. He specializes in React, Three.js, and Adobe Creative Suite. Would you like to see his projects?"
+
+User: "Can he build websites?"
+AI: "Absolutely! Zeeshan has built multiple live websites including Programmers College and several web applications. Check out the Projects section to see his work in action."
+
+User: "What's the weather like?"
+AI: "That's not my specialty! I'm here to help you explore Zeeshan's portfolio. Want to know about his design skills or development projects?"
+
+### Technical Implementation Requirements
+
+**Google AI (Gemini) Integration:**
+
+**Security - CRITICAL:**
+- Store API key in Replit Secrets as environment variable (name it `GEMINI_API_KEY`)
+- NEVER put the API key in frontend JavaScript
+- NEVER commit API key to code
+- Create a backend API endpoint to handle chatbot requests
+
+**Backend Architecture:**
+- Create a server-side endpoint (e.g., `/api/chat`)
+- Frontend sends user messages to this endpoint
+- Backend endpoint calls Google Gemini API with the API key from environment
+- Backend returns AI response to frontend
+- This keeps the API key secure
+
+**API Details:**
+- Use Google Gemini API endpoint
+- Model: gemini-pro
+- Include the chatbot persona and context in the system prompt
+- Limit response tokens to keep answers brief (around 150-200 tokens)
+- Handle errors gracefully
+
+**Frontend Behavior:**
+- Store conversation history in JavaScript variables (NOT localStorage)
+- Send conversation context with each request for continuity
+- Show loading/typing indicator while waiting for response
+- Handle errors with user-friendly messages like "Sorry, I couldn't process that. Try again?"
+- Auto-scroll to newest message
+- Clear conversation option (optional)
+
+**Performance:**
+- Implement basic rate limiting (prevent spam clicking)
+- Add debouncing to send button
+- Cache common responses if possible
+- Optimize animations for mobile
+
+---
+
+## Task 5: Framer-Style Animation Enhancements
+
+**PRESERVE EXISTING ANIMATIONS** - only add these new ones:
+
+### Add Scroll-Triggered Animations
+
+**For glass panels and sections:**
+- Implement intersection observer to detect when elements enter viewport
+- When element is 10-20% visible, trigger fade-in and slide-up animation
+- Animation should be smooth (0.6-0.8 seconds)
+- Use ease-out timing function
+- Elements should start slightly below their final position and fade in
+
+**For project cards:**
+- Stagger animation (each card animates slightly after the previous one)
+- Faster animation duration (0.4-0.5 seconds)
+
+### Enhanced Hover Effects
+
+**For project cards:**
+- Add subtle 3D tilt effect on mouse movement (card tilts slightly toward cursor)
+- Increase current lift effect slightly
+- Add smooth transition
+
+**For buttons:**
+- Add subtle scale effect (1.02-1.05) on hover
+- Smooth transition
+
+**For glass panels:**
+- Very subtle scale or glow effect on hover (optional, keep minimal)
+
+### Micro-interactions
+
+**For contact buttons:**
+- Add ripple effect on click (optional)
+- Magnetic cursor effect (button slightly moves toward cursor when hovering nearby)
+
+**For filter buttons:**
+- Smooth color transition on activation
+- Subtle bounce or scale animation on click
+
+### Loading Animations
+
+**On page load:**
+- Hero section fades in first
+- Then other sections fade in with slight stagger
+- Smooth and professional (nothing too flashy)
+
+**Important:** All animations must be performant (60fps), work smoothly on mobile, and respect user's motion preferences
+
+---
+
+## Task 6: Optional React Conversion
+
+**Consider converting to React IF it provides benefits:**
+
+**Benefits of React version:**
+- Better component organization
+- Easier state management for chatbot
+- More maintainable code
+- Better performance for animations
+- Easier to add future features
+
+**Requirements if converting to React:**
+- Maintain EXACT same visual appearance
+- All current functionality must work identically
+- Use React hooks for state management
+- Use Tailwind CSS or styled-components (keep current styling)
+- Ensure all animations work the same
+- Mobile responsiveness must be identical
+- Theme switching must work the same way
+
+**Components to create:**
+- Header component
+- HelloSection component
+- ProjectCard component
+- ExperienceItem component
+- Chatbot component
+- FilterButtons component
+- etc.
+
+**Decision:** Only convert to React if you're confident it won't break anything and will make maintenance easier. HTML version is fine if it works well.
+
+---
+
+## Quality Checklist - Verify Everything Works
+
+Before completing, test and confirm:
+
+**Functionality:**
+- [ ] NO "xnemesis" references exist anywhere
+- [ ] Video (me.mp4) plays automatically and loops
+- [ ] Video works on mobile devices
+- [ ] All portfolio data matches the provided resume
+- [ ] Chatbot opens and closes smoothly
+- [ ] Chatbot responds correctly to questions
+- [ ] Chatbot stays on brand (orange colors, matching theme)
+- [ ] Chatbot works in both dark and light modes
+- [ ] Quick action buttons work (if implemented)
+- [ ] All existing functionality still works (project filters, etc.)
+
+**Visual/Design:**
+- [ ] Orange accent color (#ff4c00) used throughout
+- [ ] Dark/light mode switching still works at 6 AM/6 PM
+- [ ] Glassmorphism style maintained
+- [ ] All fonts correct (Anton, Urbanist)
+- [ ] Chatbot matches existing design perfectly
+- [ ] No visual regressions or broken layouts
+- [ ] Responsive on all screen sizes
+
+**Performance:**
+- [ ] Page loads quickly
+- [ ] Video doesn't slow down loading
+- [ ] Animations are smooth (60fps)
+- [ ] Chatbot responses are reasonably fast
+- [ ] No lag on mobile devices
+
+**Security:**
+- [ ] API key is in environment variables only
+- [ ] API key never exposed in frontend code
+- [ ] No security warnings
+
+**Content Accuracy:**
+- [ ] All resume information accurately reflected
+- [ ] Contact email is correct (zixshankhan@gmail.com)
+- [ ] Project links all work
+- [ ] Social links are correct
+- [ ] Dates and numbers are accurate
+
+---
+
+## Final Notes
+
+**Remember:**
+- You're ENHANCING, not rebuilding
+- The current design is great - preserve it
+- Add features, don't change the identity
+- Test thoroughly on desktop and mobile
+- Keep it professional and client-ready
+
+**When in doubt:**
+- Stick closer to the current design
+- Use more subtle animations
+- Keep the orange theme
+- Make it feel premium and polished
+
+The goal is to make this portfolio impressive enough to win the Framer website developer client while staying true to Zeeshan's brand identity.
