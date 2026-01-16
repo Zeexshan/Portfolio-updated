@@ -1,0 +1,11 @@
+Model Information:
+* title:	Samsung Galaxy s24 plus
+* source:	https://sketchfab.com/3d-models/samsung-galaxy-s24-plus-deda550f064141c3bf3b9e7190a2ac39
+* author:	Davetheconqueror (https://sketchfab.com/Davetheconqueror)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Samsung Galaxy s24 plus" (https://sketchfab.com/3d-models/samsung-galaxy-s24-plus-deda550f064141c3bf3b9e7190a2ac39) by Davetheconqueror (https://sketchfab.com/Davetheconqueror) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

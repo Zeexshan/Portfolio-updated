@@ -1,0 +1,730 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 14807,
+      "max": [
+        0.037951238453388214,
+        0.003996137995272875,
+        0.07925194501876831
+      ],
+      "min": [
+        -0.03795123100280762,
+        -0.0036273240111768246,
+        -0.07925194501876831
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 177684,
+      "componentType": 5126,
+      "count": 14807,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 14807,
+      "max": [
+        1.0,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 23949,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 355368,
+      "componentType": 5126,
+      "count": 2282,
+      "max": [
+        0.038750022649765015,
+        0.005472679156810045,
+        0.07925005257129669
+      ],
+      "min": [
+        -0.037950024008750916,
+        -0.003627333091571927,
+        -0.07925005257129669
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 382752,
+      "componentType": 5126,
+      "count": 2282,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 118456,
+      "componentType": 5126,
+      "count": 2282,
+      "max": [
+        13.850000381469727,
+        7.824999809265137
+      ],
+      "min": [
+        -10.387499809265137,
+        -7.824999809265137
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 95796,
+      "componentType": 5125,
+      "count": 3297,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 410136,
+      "componentType": 5126,
+      "count": 335,
+      "max": [
+        0.030361773446202278,
+        0.0053726788610219955,
+        0.07346194982528687
+      ],
+      "min": [
+        0.017649048939347267,
+        0.005372675135731697,
+        0.02670564502477646
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 414156,
+      "componentType": 5126,
+      "count": 335,
+      "max": [
+        1.2208965927129611e-07,
+        1.0,
+        7.062645636324305e-06
+      ],
+      "min": [
+        -1.4797076630657102e-07,
+        1.0,
+        -1.0212001143372618e-05
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 136712,
+      "componentType": 5126,
+      "count": 335,
+      "max": [
+        0.7776467800140381,
+        1.009435772895813
+      ],
+      "min": [
+        0.22643394768238068,
+        -0.010751992464065552
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 108984,
+      "componentType": 5125,
+      "count": 495,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 418176,
+      "componentType": 5126,
+      "count": 107,
+      "max": [
+        0.037475377321243286,
+        -0.003617368172854185,
+        0.07866759598255157
+      ],
+      "min": [
+        -0.037475377321243286,
+        -0.003627333091571927,
+        -0.07850003242492676
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 419460,
+      "componentType": 5126,
+      "count": 107,
+      "max": [
+        0.00017682829638943076,
+        -1.0,
+        4.109763540327549e-05
+      ],
+      "min": [
+        -0.00010917105828411877,
+        -1.0,
+        -3.956258296966553e-06
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 139392,
+      "componentType": 5126,
+      "count": 107,
+      "max": [
+        0.6301072835922241,
+        1.00100839138031
+      ],
+      "min": [
+        0.1524263471364975,
+        -0.0006627365946769714
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 140248,
+      "componentType": 5126,
+      "count": 107,
+      "max": [
+        0.6301072835922241,
+        1.00100839138031
+      ],
+      "min": [
+        0.1524263471364975,
+        -0.0006627365946769714
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 110964,
+      "componentType": 5125,
+      "count": 111,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 420744,
+      "componentType": 5126,
+      "count": 17,
+      "max": [
+        0.000995362177491188,
+        -0.003617368172854185,
+        0.07496964186429977
+      ],
+      "min": [
+        -0.000935334712266922,
+        -0.003627321682870388,
+        0.07300916314125061
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 420948,
+      "componentType": 5126,
+      "count": 17,
+      "max": [
+        4.6017007093723805e-08,
+        -1.0,
+        2.991408564412268e-06
+      ],
+      "min": [
+        -1.6197564036701806e-05,
+        -1.0,
+        -1.3969839756100555e-06
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 141104,
+      "componentType": 5126,
+      "count": 17,
+      "max": [
+        0.5875465273857117,
+        0.6344673037528992
+      ],
+      "min": [
+        0.41288119554519653,
+        0.3191610276699066
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 111408,
+      "componentType": 5125,
+      "count": 21,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 421152,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.013722414150834084,
+        0.00403252337127924,
+        0.06074277311563492
+      ],
+      "min": [
+        0.010012572631239891,
+        0.003913977183401585,
+        0.05703292787075043
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 423072,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.9951848983764648,
+        0.0,
+        0.9951841235160828
+      ],
+      "min": [
+        -0.9951848983764648,
+        -1.0,
+        -0.9951841235160828
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 141240,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.7008958458900452,
+        0.6756410002708435
+      ],
+      "min": [
+        0.6055881977081299,
+        0.5485638380050659
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 111492,
+      "componentType": 5125,
+      "count": 282,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Davetheconqueror (https://sketchfab.com/Davetheconqueror)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/samsung-galaxy-s24-plus-deda550f064141c3bf3b9e7190a2ac39",
+      "title": "Samsung Galaxy s24 plus"
+    },
+    "generator": "Sketchfab-16.32.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 112620,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 142520,
+      "byteOffset": 112620,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 424992,
+      "byteOffset": 255140,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 680132,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_specular"
+  ],
+  "images": [
+    {
+      "uri": "textures/Camera_baseColor.png"
+    },
+    {
+      "uri": "textures/Screen_emissive.png"
+    },
+    {
+      "uri": "textures/Flash_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Base2",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.10014,
+          0.0908498,
+          0.0854933,
+          1.0
+        ],
+        "roughnessFactor": 0.05
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Base",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.14758262294780816,
+          0.13149404862977898,
+          0.123854406225947,
+          1.0
+        ],
+        "roughnessFactor": 0.35
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Camera",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "roughnessFactor": 0.1
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "emissiveTexture": {
+        "index": 1
+      },
+      "name": "Screen",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0443152,
+          0.0443152,
+          0.0443152,
+          1.0
+        ],
+        "roughnessFactor": 0.03
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Camera2",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.9,
+        "roughnessFactor": 0.05
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 0.75
+        }
+      },
+      "name": "Flash",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0.5,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Samsung S24+.001_Base2_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Samsung S24+.001_Base_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Samsung S24+.001_Camera_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Samsung S24+.001_Screen_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 13,
+            "POSITION": 12,
+            "TEXCOORD_0": 14,
+            "TEXCOORD_1": 15
+          },
+          "indices": 16,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Samsung S24+.001_Camera2_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 18,
+            "POSITION": 17,
+            "TEXCOORD_0": 19
+          },
+          "indices": 20,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Samsung S24+.001_Flash_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 22,
+            "POSITION": 21,
+            "TEXCOORD_0": 23
+          },
+          "indices": 24,
+          "material": 5,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "f166fb80ac9e427d9a7abd6c177066cf.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Samsung S24+.001"
+    },
+    {
+      "mesh": 0,
+      "name": "Samsung S24+.001_Base2_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Samsung S24+.001_Base_0"
+    },
+    {
+      "mesh": 2,
+      "name": "Samsung S24+.001_Camera_0"
+    },
+    {
+      "mesh": 3,
+      "name": "Samsung S24+.001_Screen_0"
+    },
+    {
+      "mesh": 4,
+      "name": "Samsung S24+.001_Camera2_0"
+    },
+    {
+      "mesh": 5,
+      "name": "Samsung S24+.001_Flash_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}
