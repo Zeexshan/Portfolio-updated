@@ -62,6 +62,28 @@ Response Guidelines:
 
 let conversationHistory = [];
 
+const MODELS = [
+  'gemini-2.5-flash',
+  'gemini-2.0-flash',
+  'gemini-3-flash-preview',
+  'gemini-2.0-flash-lite'
+];
+
+async function tryGeminiModel(apiKey, model, contents) {
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents,
+      generationConfig: {
+        maxOutputTokens: 200,
+        temperature: 0.7
+      }
+    })
+  });
+  return response.json();
+}
+
 app.post('/api/chat', async (req, res) => {
   try {
     const { message } = req.body;
@@ -80,29 +102,41 @@ app.post('/api/chat', async (req, res) => {
 
     conversationHistory.push({ role: 'user', parts: [{ text: message }] });
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [
-          { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
-          { role: 'model', parts: [{ text: "I understand. I'm Zeeshan's AI assistant, ready to help visitors learn about his work, skills, and experience. I'll keep my responses brief and professional." }] },
-          ...conversationHistory
-        ],
-        generationConfig: {
-          maxOutputTokens: 200,
-          temperature: 0.7
-        }
-      })
-    });
+    const contents = [
+      { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
+      { role: 'model', parts: [{ text: "I understand. I'm Zeeshan's AI assistant, ready to help visitors learn about his work, skills, and experience. I'll keep my responses brief and professional." }] },
+      ...conversationHistory
+    ];
 
-    const data = await response.json();
-    
-    if (data.error) {
-      throw new Error(data.error.message || 'API Error');
+    let aiResponse = null;
+    let lastError = null;
+
+    for (const model of MODELS) {
+      try {
+        console.log(`Trying model: ${model}`);
+        const data = await tryGeminiModel(apiKey, model, contents);
+        
+        if (data.error) {
+          console.log(`Model ${model} error:`, data.error.message);
+          lastError = data.error.message;
+          continue;
+        }
+
+        aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (aiResponse) {
+          console.log(`Success with model: ${model}`);
+          break;
+        }
+      } catch (err) {
+        console.log(`Model ${model} failed:`, err.message);
+        lastError = err.message;
+        continue;
+      }
     }
 
-    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "I couldn't process that. Try asking about Zeeshan's projects or skills!";
+    if (!aiResponse) {
+      throw new Error(lastError || 'All models failed');
+    }
     
     conversationHistory.push({ role: 'model', parts: [{ text: aiResponse }] });
     
