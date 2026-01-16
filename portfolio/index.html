@@ -61,7 +61,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 10000;
+            z-index: 99999;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
@@ -140,13 +140,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: -1;
             pointer-events: none;
+            opacity: 0.4;
         }
 
         .content {
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
         .hero {
@@ -329,8 +330,8 @@
         .section-title {
             font-family: "Anton", sans-serif;
             font-size: clamp(40px, 6vw, 80px);
-            letter-spacing: -2px;
-            line-height: 1;
+            letter-spacing: 0px;
+            line-height: 1.1;
         }
 
         .about-grid {
@@ -348,13 +349,15 @@
             position: relative;
             border-radius: 20px;
             overflow: hidden;
-            aspect-ratio: 4/5;
+            aspect-ratio: 9/16;
+            max-height: 500px;
         }
 
         .about-video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: var(--glass-bg);
         }
 
         .about-video-overlay {
@@ -427,22 +430,41 @@
 
         .projects-track {
             display: flex;
-            gap: 40px;
-            padding: 40px 0;
+            gap: 30px;
+            padding: 40px 20px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
             cursor: grab;
         }
 
-        .projects-track::-webkit-scrollbar { display: none; }
+        .projects-track::-webkit-scrollbar { 
+            height: 6px; 
+        }
+        
+        .projects-track::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+        
+        .projects-track::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 3px;
+        }
 
         .projects-track:active { cursor: grabbing; }
 
+        .scroll-hint {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
         .project-card-3d {
             flex-shrink: 0;
-            width: 500px;
+            width: 380px;
             scroll-snap-align: start;
             perspective: 1000px;
         }
@@ -1229,6 +1251,31 @@
                     </div>
                 </div>
             </div>
+            <p class="scroll-hint">← Drag to scroll →</p>
+        </section>
+
+        <section id="showcase3d">
+            <div class="section-header reveal">
+                <div class="section-label">Interactive 3D</div>
+                <h2 class="section-title">DEVICE SHOWCASE</h2>
+            </div>
+            <div class="device-showcase reveal">
+                <div class="device-3d-container">
+                    <canvas id="device-canvas"></canvas>
+                </div>
+                <div class="device-info">
+                    <h3>Responsive Web Design</h3>
+                    <p>Every project is crafted to look stunning on any device. From desktop to mobile, I ensure pixel-perfect experiences across all screen sizes.</p>
+                    <div>
+                        <span class="device-badge">Desktop</span>
+                        <span class="device-badge">Tablet</span>
+                        <span class="device-badge">Mobile</span>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 12px; color: var(--text-secondary);">
+                        Drag to rotate the 3D models
+                    </p>
+                </div>
+            </div>
         </section>
 
         <section id="skills">
@@ -1279,22 +1326,32 @@
                 <div class="experience-item">
                     <div class="experience-year">2024 - Present</div>
                     <div class="experience-role">Fullstack Developer</div>
-                    <div class="experience-company">Hussaini IT Services</div>
+                    <div class="experience-company">Hussaini IT Services - Building web applications with React, Node.js, and MongoDB</div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-year">2024 - Present</div>
                     <div class="experience-role">Marketing Trainer</div>
-                    <div class="experience-company">MIT College, Ujjain</div>
+                    <div class="experience-company">MIT College, Ujjain - Teaching digital marketing and web technologies</div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-year">2024</div>
+                    <div class="experience-role">Freelance Web Developer</div>
+                    <div class="experience-company">Freelancy - Building custom websites and web applications for clients</div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-year">2023 - 2024</div>
                     <div class="experience-role">YouTube Content Creator</div>
-                    <div class="experience-company">Beyond X Canon - 2K+ Subscribers, 1.7M+ Views</div>
+                    <div class="experience-company">Beyond X Canon - 2K+ Subscribers, 1.7M+ Views - Tech tutorials and creative content</div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-year">2023</div>
+                    <div class="experience-role">Video Editor & Content Creator</div>
+                    <div class="experience-company">PGTV - Creating engaging video content and motion graphics</div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-year">2022 - 2023</div>
                     <div class="experience-role">Jr. Graphic Designer</div>
-                    <div class="experience-company">Programmer's College</div>
+                    <div class="experience-company">Programmer's College - Designing promotional materials and educational content</div>
                 </div>
             </div>
         </section>
@@ -1616,6 +1673,89 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
         });
+
+        // 3D Device Showcase
+        function initDeviceShowcase() {
+            const deviceCanvas = document.getElementById('device-canvas');
+            if (!deviceCanvas) return;
+
+            // Check WebGL support
+            try {
+                const gl = deviceCanvas.getContext('webgl') || deviceCanvas.getContext('experimental-webgl');
+                if (!gl) throw new Error('WebGL not supported');
+            } catch (e) {
+                deviceCanvas.style.background = 'linear-gradient(135deg, rgba(255,76,0,0.2) 0%, rgba(0,0,0,0.3) 100%)';
+                deviceCanvas.style.display = 'flex';
+                deviceCanvas.style.alignItems = 'center';
+                deviceCanvas.style.justifyContent = 'center';
+                return;
+            }
+
+            const deviceScene = new THREE.Scene();
+            const deviceCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
+            deviceCamera.position.z = 5;
+            deviceCamera.position.y = 1;
+
+            const deviceRenderer = new THREE.WebGLRenderer({ canvas: deviceCanvas, alpha: true, antialias: true });
+            deviceRenderer.setSize(400, 400);
+            deviceRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            deviceScene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 5, 5);
+            deviceScene.add(directionalLight);
+
+            const orangeLight = new THREE.PointLight(0xff4c00, 0.5, 10);
+            orangeLight.position.set(-3, 2, 3);
+            deviceScene.add(orangeLight);
+
+            // Load GLTF models
+            const gltfLoader = new THREE.GLTFLoader();
+            let laptopModel, phoneModel;
+
+            // Load laptop model
+            gltfLoader.load('models/laptop/scene.gltf', (gltf) => {
+                laptopModel = gltf.scene;
+                laptopModel.scale.set(0.8, 0.8, 0.8);
+                laptopModel.position.set(-1, -0.5, 0);
+                laptopModel.rotation.y = 0.3;
+                deviceScene.add(laptopModel);
+            }, undefined, (error) => {
+                console.log('Laptop model could not be loaded:', error);
+            });
+
+            // Load phone model
+            gltfLoader.load('models/phone/scene.gltf', (gltf) => {
+                phoneModel = gltf.scene;
+                phoneModel.scale.set(0.5, 0.5, 0.5);
+                phoneModel.position.set(1.5, -0.3, 0.5);
+                phoneModel.rotation.y = -0.2;
+                deviceScene.add(phoneModel);
+            }, undefined, (error) => {
+                console.log('Phone model could not be loaded:', error);
+            });
+
+            // OrbitControls for interaction
+            const controls = new THREE.OrbitControls(deviceCamera, deviceCanvas);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.enableZoom = false;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 1;
+
+            function animateDevice() {
+                requestAnimationFrame(animateDevice);
+                controls.update();
+                deviceRenderer.render(deviceScene, deviceCamera);
+            }
+            animateDevice();
+        }
+
+        // Initialize device showcase after page loads
+        setTimeout(initDeviceShowcase, 1500);
 
         // Chatbot functionality
         const chatbotBtn = document.getElementById('chatbotBtn');
