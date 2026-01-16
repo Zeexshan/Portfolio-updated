@@ -1,34 +1,43 @@
 # Zeeshan Khan Portfolio
 
 ## Overview
-A modern, glassmorphic portfolio website for Zeeshan Khan - a Web Developer, Graphic Designer & Video Editor from Ujjain, India.
+An Awwwards-level, world-class portfolio website for Zeeshan Khan - a Web Developer, Graphic Designer & Video Editor from Ujjain, India. Features premium 3D graphics, smooth animations, and interactive elements.
 
-## Features
-- **Glassmorphism Design** - Modern UI with glass-effect panels
-- **Auto Theme Switching** - Dark mode (6PM-6AM), Light mode (6AM-6PM)
+## Premium Features
+- **Three.js 3D Background** - Floating geometric shapes with orange glow, parallax on scroll
+- **Custom Cursor** - Interactive cursor with magnetic hover effects
+- **Hero Parallax** - Mouse-tracking parallax effect on hero content
+- **Loading Animation** - Premium loading screen with progress bar
+- **Horizontal Scroll Gallery** - Draggable project showcase with 3D card effects
+- **Scroll Animations** - IntersectionObserver-powered reveal animations with stagger
 - **AI Chatbot** - Gemini-powered assistant to answer questions about Zeeshan
-- **Video Profile** - Autoplay looping video in hero section
-- **Scroll Animations** - Smooth fade-in animations on scroll
-- **Project Gallery** - Filterable web and graphics projects
-- **Responsive Design** - Works on all device sizes
+- **Auto Theme Switching** - Dark mode (6PM-6AM), Light mode (6AM-6PM)
+- **Video Profile** - Autoplay looping video in about section
+- **WebGL Fallback** - Graceful degradation for unsupported browsers
+- **Responsive Design** - Mobile-first, works on all device sizes
 
 ## Project Structure
 ```
 portfolio/
-├── server.js       # Express backend with Gemini chatbot API
-├── index.html      # Main portfolio page
-├── me.mp4          # Profile video
-├── hi.png          # Fallback profile image
-├── *.jpg, *.png    # Project images
-└── package.json    # Node dependencies
+├── server.js           # Express backend with Gemini chatbot API
+├── index.html          # Main portfolio page with Three.js
+├── me.mp4              # Profile video
+├── hi.png              # Fallback profile image
+├── models/             # 3D models from Sketchfab
+│   ├── laptop/         # Lenovo laptop GLTF model
+│   ├── phone/          # Samsung Galaxy GLTF model
+│   └── shapes/         # Floating shapes GLTF model
+├── *.jpg, *.png        # Project images
+└── package.json        # Node dependencies
 ```
 
 ## Tech Stack
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla), Three.js
 - **Backend**: Node.js, Express
-- **AI**: Google Gemini API (gemini-2.0-flash)
+- **AI**: Google Gemini API (gemini-2.5-flash with fallback)
 - **Fonts**: Anton (headings), Urbanist (body)
-- **Design System**: CSS Custom Properties, Glassmorphism
+- **3D**: Three.js, GLTFLoader, OrbitControls
+- **Design**: CSS Custom Properties, Glassmorphism, Magnetic Cursor
 
 ## Environment Variables
 - `GEMINI_API_KEY` - Required for AI chatbot functionality
@@ -39,23 +48,41 @@ The server runs on port 5000. Start with:
 cd portfolio && node server.js
 ```
 
-## Design Notes
-- Primary accent color: #ff4c00 (orange)
-- Glass panels use backdrop-filter with blur
-- Theme switches automatically based on time of day
-- All animations respect prefers-reduced-motion
+## Design System
+- Primary accent: #ff4c00 (orange)
+- Dark mode bg: #0a0a0a
+- Light mode bg: #f5f5f5
+- Glass panels: blur(20px), rgba overlays
+- Border radius: 16-24px
+- Transitions: cubic-bezier easing
+- Font sizes: clamp() for fluid typography
+
+## Animation Effects
+- **Loading**: 0-100% progress bar with fade out
+- **Hero**: Fade up with stagger delays
+- **Scroll Reveal**: translateY with opacity transition
+- **Magnetic**: Elements follow cursor on hover
+- **3D Cards**: translateY + rotateX on hover
+- **Cursor**: Custom ring + dot with smooth interpolation
+
+## Accessibility
+- Respects prefers-reduced-motion
+- Keyboard navigation support
+- Semantic HTML structure
+- Color contrast (WCAG AA)
+- Touch-optimized for mobile
 
 ## Recent Changes (January 2026)
-- Removed Instagram/xnemesis references
-- Replaced profile image with autoplay video (me.mp4)
-- Updated experience: Added Hussaini IT Services, MIT College trainer role
-- Updated YouTube stats: 2K+ subscribers, 1.7M+ views
-- Added ICAT certification (All India Rank #1279)
-- Added Premiere Pro and After Effects to skills
-- Added AI chatbot assistant with Gemini
-- Added scroll-triggered animations
-- Added quick action buttons in chatbot
-- Enhanced hover effects on project cards
+- Complete redesign to Awwwards-level quality
+- Added Three.js 3D background with floating shapes
+- Implemented custom cursor with magnetic effects
+- Added hero parallax mouse tracking
+- Created horizontal scroll project gallery
+- Integrated GLTF 3D models (laptop, phone, shapes)
+- Updated Gemini API models (gemini-2.5-flash)
+- Added premium loading animation
+- Implemented WebGL fallback for compatibility
+- Enhanced scroll-triggered reveal animations
 
 ## User Preferences
 - Keep orange accent color (#ff4c00)
@@ -63,3 +90,4 @@ cd portfolio && node server.js
 - Auto dark/light mode at 6AM/6PM
 - Anton font for headings
 - Urbanist font for body text
+- Premium, Awwwards-quality polish
